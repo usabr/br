@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Como são as eleições pelo mundo?</title>
+    <style>
+        :root {
+            --primary-color: #002776;
+            --secondary-color: #009c3b;
+            --accent-color: #ffdf00;
+            --danger-color: #d9534f;
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+            --white: #ffffff;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            border-top: 5px solid var(--secondary-color);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--bg-color);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 28px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        h2 {
+            color: var(--accent-color);
+            background-color: var(--primary-color);
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .summary-boxes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .box {
+            background: #fff;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .box h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .box p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin-bottom: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            background-color: var(--white);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: var(--white);
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+            white-space: nowrap;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .status-no {
+            color: #777;
+            font-weight: 500;
+        }
+
+        .status-yes {
+            color: var(--danger-color);
+            font-weight: bold;
+        }
+        
+        .status-yes-print {
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .brazil-row {
+            background-color: #fff8e1; /* Light yellow */
+            font-weight: bold;
+        }
+
+        .brazil-row td {
+            border-bottom: 2px solid var(--accent-color);
+            border-top: 2px solid var(--accent-color);
+        }
+
+        .observations {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .observations h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .observations p {
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        .observations p:last-child {
+            margin-bottom: 0;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 13px;
+            color: #666;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 15px;
+                padding: 15px;
+            }
+            h1 {
+                font-size: 22px;
+            }
+            h2 {
+                font-size: 16px;
+            }
+            th, td {
+                padding: 10px;
+                font-size: 14px;
+            }
+            .summary-boxes {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Como são as eleições pelo mundo?</h1>
+        <h2>Pesquisa sobre Urnas em 150 Países Relevantes</h2>
+    </header>
+
+    <div class="summary-boxes">
+        <div class="box">
+            <h3>Maioria dos Países</h3>
+            <p>Percebe-se que, ao contrário do que é frequentemente dito, a Urna Eletrônica não é usada pela grande maioria dos países que se dizem democráticos.</p>
+        </div>
+        <div class="box">
+            <h3>Grandes Potências</h3>
+            <p>Potências como Japão, Alemanha, Suíça e Holanda chegaram a usar o voto eletrônico, mas voltaram atrás, alegando falta de transparência (sistema abandonado).</p>
+        </div>
+        <div class="box" style="border-left-color: var(--secondary-color);">
+            <h3>Comprovante Impresso</h3>
+            <p>Entre os países que usam a Urna Eletrônica, a quase totalidade utiliza sistemas com <strong>comprovante impresso (VVPAT)</strong> para permitir auditoria.</p>
+        </div>
+    </div>
+
+    <div class="observations">
+        <h3>Pontos de Atenção</h3>
+        <p><strong>DRE (Direct-Recording Electronic):</strong> Máquinas de registro direto sem rastro de papel auditável.</p>
+        <p><strong>VVPAT (Voter Verified Paper Audit Trail):</strong> Máquinas com registro eletrônico, mas que geram um comprovante em papel verificado pelo eleitor antes de cair na urna física, permitindo auditoria independente do software.</p>
+    </div>
+
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>País</th>
+                    <th>Usa Voto Eletrônico?</th>
+                    <th>Como é o sistema / Obs</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Cédulas de Papel / Nunca Usaram -->
+                <tr><td>Afghanistan</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Nunca usado</td></tr>
+                <tr><td>Algeria</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Nunca usado</td></tr>
+                <tr><td>Andorra</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Nunca usado</td></tr>
+                <tr><td>Áustria</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Pode adotar, em estudos</td></tr>
+                <tr><td>Azerbaijan</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Nunca usado</td></tr>
+                <tr><td>Bahrain</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Pode adotar, em estudos</td></tr>
+                <tr><td>Belarus</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Nunca usado</td></tr>
+                <tr><td>Belize</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Nunca usado</td></tr>
+                <tr><td>Benin</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Nunca usado</td></tr>
+                <tr><td>Bolívia</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Pode adotar, em estudos</td></tr>
+                <tr><td>Bosnia and Herzegovina</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Nunca usado</td></tr>
+                <tr><td>Chile</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Nunca usado</td></tr>
+                <tr><td>Colômbia</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Pode adotar, em estudos</td></tr>
+                <tr><td>Costa Rica</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Pode adotar, em estudos</td></tr>
+                <tr><td>Croácia</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Nunca usado</td></tr>
+                <tr><td>Cuba</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Nunca usado</td></tr>
+                <tr><td>Dinamarca</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Pode adotar, em estudos</td></tr>
+                <tr><td>Egito</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Nunca usado</td></tr>
+                <tr><td>Espanha</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Pode adotar, em estudos</td></tr>
+                <tr><td>Grécia</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Nunca usado</td></tr>
+                <tr><td>Inglaterra</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Pode adotar, em estudos</td></tr>
+                <tr><td>Itália</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Pode adotar, em estudos</td></tr>
+                <tr><td>Portugal</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Pode adotar, em estudos</td></tr>
+                <tr><td>Suécia</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Pode adotar, em estudos</td></tr>
+                <tr><td>Uruguai</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Pode adotar, em estudos</td></tr>
+                
+                <!-- Abandonaram -->
+                <tr><td>Finlândia</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Usado, mas abandonado</td></tr>
+                <tr><td>Alemanha</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Usado, mas abandonado</td></tr>
+                <tr><td>Holanda</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Usado, mas abandonado</td></tr>
+                <tr><td>Irlanda</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Usado, mas abandonado</td></tr>
+                <tr><td>Japão</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Usado, mas abandonado</td></tr>
+                <tr><td>Cazaquistão</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Usado, mas abandonado</td></tr>
+                <tr><td>Noruega</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Usado, mas abandonado</td></tr>
+                <tr><td>Romênia</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Usado, mas abandonado</td></tr>
+                <tr><td>Suíça</td><td class="status-no">NÃO</td><td>Cédulas de PAPEL / Usado, mas abandonado</td></tr>
+
+                <!-- Usam Eletrônico -->
+                <tr class="brazil-row">
+                    <td>Brasil</td>
+                    <td class="status-yes">SIM</td>
+                    <td>DRE (Não Auditável) / <strong>SEM COMPROVANTE IMPRESSO !!!</strong></td>
+                </tr>
+                <tr><td>Bangladesh</td><td class="status-yes">SIM</td><td>DRE (Não Auditável) / SEM COMPROVANTE IMPRESSO !!!</td></tr>
+                <tr><td>Bhutan</td><td class="status-yes">SIM</td><td>DRE (Não Auditável) / SEM COMPROVANTE IMPRESSO !!!</td></tr>
+                
+                <!-- Usam com VVPAT / Impresso -->
+                <tr><td>Estados Unidos</td><td class="status-yes-print">SIM</td><td>VVPAT e Cédulas de Papel / URNA COM COMPROVANTE IMPRESSO</td></tr>
+                <tr><td>Argentina</td><td class="status-yes-print">SIM</td><td>EBPS / URNA COM COMPROVANTE IMPRESSO</td></tr>
+                <tr><td>Bélgica</td><td class="status-yes-print">SIM</td><td>EBPS / URNA COM COMPROVANTE IMPRESSO</td></tr>
+                <tr><td>França</td><td class="status-yes-print">SIM</td><td>VVPAT / URNA COM COMPROVANTE IMPRESSO</td></tr>
+                <tr><td>Índia</td><td class="status-yes-print">SIM</td><td>VVPAT / URNA COM COMPROVANTE IMPRESSO</td></tr>
+                <tr><td>México</td><td class="status-yes-print">SIM</td><td>VVPAT / URNA COM COMPROVANTE IMPRESSO</td></tr>
+                <tr><td>Panamá</td><td class="status-yes-print">SIM</td><td>VVPAT / URNA COM COMPROVANTE IMPRESSO</td></tr>
+                <tr><td>Paraguai</td><td class="status-yes-print">SIM</td><td>VVPAT / URNA COM COMPROVANTE IMPRESSO</td></tr>
+                <tr><td>Peru</td><td class="status-yes-print">SIM</td><td>VVPAT / URNA COM COMPROVANTE IMPRESSO</td></tr>
+                <tr><td>Rússia</td><td class="status-yes-print">SIM</td><td>VVPAT / URNA COM COMPROVANTE IMPRESSO</td></tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <p style="text-align: center; font-style: italic; color: #555; font-size: 14px;">(Nota: A tabela acima exibe uma seleção representativa da lista de 150 países para facilitar a visualização e leitura.)</p>
+
+    <footer>
+        Fonte: International Institute for Democracy and Electoral Assistance (International IDEA) - <a href="https://www.idea.int" target="_blank" rel="noopener noreferrer">www.idea.int</a>
+    </footer>
+</div>
+
+</body>
+</html>

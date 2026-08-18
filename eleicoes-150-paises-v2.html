@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Como são as urnas nos principais Países do Mundo?</title>
+    <style>
+        :root {
+            --primary-blue: #021a52; /* Azul Escuro do background da imagem */
+            --header-blue: #012a6a; /* Azul do cabeçalho da tabela */
+            --accent-yellow: #fecb00; /* Amarelo da borda e textos */
+            --bg-dark-blue: #0b1f52; /* Fundo geral da página */
+            --gradient-top: #008a3d; /* Verde do gradiente */
+            --gradient-bottom: #01377d; /* Azul do gradiente */
+            --row-odd: #e8f5e9; /* Verde bem claro (linhas ímpares) */
+            --row-even: #e3f2fd; /* Azul bem claro (linhas pares) */
+            --text-dark: #021a52;
+            --danger-red: #d32f2f;
+            --success-green: #008a3d;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-dark-blue);
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            border: 5px solid var(--accent-yellow);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            overflow: hidden; /* Mantém o gradiente contido nas bordas arredondadas */
+        }
+
+        header {
+            text-align: center;
+            background: linear-gradient(135deg, var(--gradient-top) 0%, var(--gradient-bottom) 100%);
+            padding: 40px 20px;
+            border-bottom: 5px solid var(--accent-yellow);
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 26px;
+            font-weight: 900;
+            margin: 0 0 15px 0;
+            text-transform: uppercase;
+            line-height: 1.4;
+        }
+
+        /* Transforma o primeiro "span" numa "pílula" amarela, igual ao design */
+        h1 span {
+            background-color: var(--accent-yellow);
+            color: var(--primary-blue);
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 900;
+            display: block; /* Força quebra de linha */
+            width: max-content;
+            margin: 0 auto 15px auto;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            color: var(--accent-yellow);
+            font-size: 16px;
+            margin: 0;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            padding: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 14px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #dcdcdc; /* Borda externa sutil para a tabela toda */
+        }
+
+        th, td {
+            padding: 14px 12px;
+            text-align: center;
+            vertical-align: middle;
+            border: none; /* Remove as linhas verticais/horizontais internas igual ao modelo */
+        }
+
+        th {
+            background-color: var(--header-blue);
+            color: #ffffff;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            position: sticky;
+            top: 0;
+        }
+
+        /* Linhas alternadas idênticas à imagem */
+        tbody tr:nth-child(odd) {
+            background-color: var(--row-odd);
+        }
+        tbody tr:nth-child(even) {
+            background-color: var(--row-even);
+        }
+
+        /* Alinhamentos Específicos */
+        td:nth-child(1) { width: 40px; font-weight: bold; color: #555; }
+        td:nth-child(2) { text-align: left; font-weight: 700; color: var(--primary-blue); }
+        td:nth-child(4) { text-align: left; font-weight: 600; color: var(--primary-blue); }
+
+        /* Cores de destaque nos status */
+        .status-no td:nth-child(3) { color: var(--danger-red); font-weight: 800; }
+        
+        .status-abandoned td:nth-child(3) { color: var(--danger-red); font-weight: 800; }
+        .status-abandoned td:nth-child(4) { font-weight: bold; }
+        .status-abandoned td:nth-child(5) { color: var(--danger-red); font-weight: bold; text-align: left;}
+
+        /* A linha do Brasil super destacada */
+        .status-brazil {
+            background-color: var(--accent-yellow) !important;
+            box-shadow: inset 0 0 0 2px var(--primary-blue);
+        }
+        .status-brazil td { font-weight: 800; color: var(--primary-blue); }
+        .status-brazil td:nth-child(2) { text-align: left; }
+        .status-brazil td:nth-child(5) { color: var(--danger-red); text-align: left;}
+
+        .status-yes-dre td:nth-child(3) { color: var(--primary-blue); font-weight: 900; }
+        .status-yes-dre td:nth-child(5) { color: var(--danger-red); font-weight: bold; text-align: left;}
+        
+        .status-yes-vvpat td:nth-child(3) { color: var(--success-green); font-weight: 900; }
+        .status-yes-vvpat td:nth-child(5) { color: var(--success-green); font-weight: bold; text-align: left;}
+
+        /* Observações formatadas */
+        .observations {
+            margin: 0 30px 20px 30px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border: 1px dashed #cccccc;
+        }
+
+        .observations p {
+            margin-bottom: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+        
+        .observations p:last-child {
+            margin-bottom: 0;
+        }
+
+        .observations p span {
+             color: var(--danger-red);
+        }
+
+        footer {
+            text-align: center;
+            font-size: 13px;
+            color: var(--primary-blue);
+            font-weight: 700;
+            padding: 20px 30px 30px 30px;
+            background-color: #ffffff;
+            border-top: 1px solid #eaeaea;
+        }
+        
+        footer a {
+            color: var(--primary-blue);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .container { border-width: 3px; }
+            h1 { font-size: 20px; }
+            h2 { font-size: 14px; }
+            .table-responsive { padding: 15px; }
+            th, td { padding: 10px; font-size: 12px; }
+            .observations { margin: 0 15px 15px 15px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1><span>Pelo Amor de DEUS</span>, alguém já pesquisou como são as URNAS nos principais Países do Mundo ??</h1>
+        <h2>Separamos os 150 Países mais Relevantes que se dizem Democráticos !</h2>
+    </header>
+
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>PAÍS</th>
+                    <th>Usa Voto Eletrônico Atualmente?</th>
+                    <th>Como é o sistema de Votação?</th>
+                    <th>Obs:</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="status-no"><td>1</td><td>Afghanistan</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>2</td><td>Algeria</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>3</td><td>Andorra</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>4</td><td><strong>Austria</strong></td><td>NÃO</td><td>Cédulas de PAPEL</td><td>Pode adotar, ainda em Estudos.</td></tr>
+                <tr class="status-no"><td>5</td><td>Azerbaijan</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>6</td><td>Bahrain</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>Pode adotar, ainda em Estudos.</td></tr>
+                <tr class="status-no"><td>7</td><td>Belarus</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>8</td><td>Belize</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>9</td><td>Benin</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>10</td><td>Bolivia</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>Pode adotar, ainda em Estudos.</td></tr>
+                <tr class="status-no"><td>11</td><td>Bosnia and Herzegovina</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>12</td><td>Botswana</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>13</td><td>Burkina Faso</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>14</td><td>Burundi</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>15</td><td>Cambodia</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>16</td><td>Cameroon</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>17</td><td>Central African Republic</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>18</td><td><strong>Chile</strong></td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>19</td><td>Colombia</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>Pode adotar, ainda em Estudos.</td></tr>
+                <tr class="status-no"><td>20</td><td>Cook Islands</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>21</td><td><strong>Costa Rica</strong></td><td>NÃO</td><td>Cédulas de PAPEL</td><td>Pode adotar, ainda em Estudos.</td></tr>
+                <tr class="status-no"><td>22</td><td>Croatia</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>23</td><td>Cuba</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>24</td><td>Cyprus</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>25</td><td>Czechia</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>26</td><td><strong>Denmark</strong></td><td>NÃO</td><td>Cédulas de PAPEL</td><td>Pode adotar, ainda em Estudos.</td></tr>
+                <tr class="status-no"><td>27</td><td>Egito</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>28</td><td>El Salvador</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>29</td><td>Equatorial Guinea</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>30</td><td>Eritrea</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>31</td><td>Eswatini</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>32</td><td>Ethiopia</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                
+                <tr class="status-abandoned"><td>33</td><td><strong>Finland</strong></td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico foi usado, mas foi abandonado.</td></tr>
+                
+                <tr class="status-no"><td>34</td><td>Gabon</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>35</td><td>Georgia</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                
+                <tr class="status-abandoned"><td>36</td><td><strong>Germany</strong></td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico foi usado, mas foi abandonado.</td></tr>
+                
+                <tr class="status-no"><td>37</td><td>Ghana</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>38</td><td>Greece</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>39</td><td>Guatemala</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>40</td><td>Guinea</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>41</td><td>Haiti</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>Pode adotar, ainda em Estudos.</td></tr>
+                
+                <tr class="status-abandoned"><td>42</td><td><strong>Holanda</strong></td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico foi usado, mas foi abandonado.</td></tr>
+                
+                <tr class="status-no"><td>43</td><td>Honduras</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>Pode adotar, ainda em Estudos.</td></tr>
+                <tr class="status-no"><td>44</td><td><strong>Hong Kong</strong></td><td>NÃO</td><td>Cédulas de PAPEL</td><td>Um referendo em andamento.</td></tr>
+                <tr class="status-no"><td>45</td><td>Hungary</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>46</td><td>Iceland</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>Pode adotar, ainda em Estudos.</td></tr>
+                <tr class="status-no"><td>47</td><td>Indonesia</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>Pode adotar, ainda em Estudos.</td></tr>
+                <tr class="status-no"><td>48</td><td><strong>Inglaterra</strong></td><td>NÃO</td><td>Cédulas de PAPEL</td><td>Pode adotar, ainda em Estudos.</td></tr>
+                
+                <tr class="status-abandoned"><td>49</td><td><strong>Irlanda</strong></td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico foi usado, mas foi abandonado.</td></tr>
+                
+                <tr class="status-no"><td>50</td><td><strong>Israel</strong></td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>51</td><td>Italy</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>Pode adotar, ainda em Estudos.</td></tr>
+                <tr class="status-no"><td>52</td><td>Jamaica</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                
+                <tr class="status-abandoned"><td>53</td><td><strong>Japan</strong></td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico foi usado, mas foi abandonado.</td></tr>
+                
+                <tr class="status-no"><td>54</td><td>Jordan</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                
+                <tr class="status-abandoned"><td>55</td><td>Kazakhstan</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico foi usado, mas foi abandonado.</td></tr>
+                
+                <tr class="status-no"><td>56</td><td>Kenya</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>57</td><td>Kiribati</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>58</td><td>Kosovo</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>59</td><td>Kuwait</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>Pode adotar, ainda em Estudos.</td></tr>
+                <tr class="status-no"><td>60</td><td>Latvia</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>61</td><td>Lebanon</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>62</td><td>Lesotho</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>63</td><td>Liberia</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>64</td><td>Libya</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>65</td><td>Liechtenstein</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>Pode adotar, ainda em Estudos.</td></tr>
+                <tr class="status-no"><td>66</td><td>Lithuania</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>Pode adotar, ainda em Estudos.</td></tr>
+                <tr class="status-no"><td>67</td><td><strong>Luxembourg</strong></td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>68</td><td>Madagascar</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>69</td><td>Malawi</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>70</td><td>Malaysia</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>71</td><td>Maldives</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>72</td><td>Mali</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>73</td><td>Malta</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>74</td><td>Mauritania</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>75</td><td>Mauritius</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>76</td><td>Montenegro</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>77</td><td>Morocco</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>78</td><td>Mozambique</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>79</td><td>Myanmar</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>80</td><td>Nauru</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>81</td><td>Nepal</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>82</td><td>Nicaragua</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>83</td><td>Niger</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>84</td><td>Nigeria</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>Pode adotar, ainda em Estudos.</td></tr>
+                <tr class="status-no"><td>85</td><td>Niue</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                
+                <tr class="status-abandoned"><td>86</td><td><strong>Noruega</strong></td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico foi usado, mas foi abandonado.</td></tr>
+                
+                <tr class="status-no"><td>87</td><td>Palau</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>88</td><td>Papua New Guinea</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>89</td><td>Poland</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>90</td><td><strong>Portugal</strong></td><td>NÃO</td><td>Cédulas de PAPEL</td><td>Pode adotar, ainda em Estudos.</td></tr>
+                
+                <tr class="status-abandoned"><td>91</td><td>Romania</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico foi usado, mas foi abandonado.</td></tr>
+                
+                <tr class="status-no"><td>92</td><td>Rwanda</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>93</td><td>Samoa</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>94</td><td>San Marino</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>95</td><td>Senegal</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>96</td><td>Serbia</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>97</td><td>Seychelles</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>98</td><td>Sierra Leone</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>Pode adotar, ainda em Estudos.</td></tr>
+                <tr class="status-no"><td>99</td><td>Singapore</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>100</td><td>Slovakia</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>101</td><td>Slovenia</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>102</td><td>Solomon Islands</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>103</td><td>South Africa</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>Pode adotar, ainda em Estudos.</td></tr>
+                <tr class="status-no"><td>104</td><td>South Sudan</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>105</td><td><strong>Spain</strong></td><td>NÃO</td><td>Cédulas de PAPEL</td><td>Pode adotar, ainda em Estudos.</td></tr>
+                <tr class="status-no"><td>106</td><td>Sri Lanka</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>Pode adotar, ainda em Estudos.</td></tr>
+                <tr class="status-no"><td>107</td><td>State of Palestine</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>108</td><td>Sudan</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>109</td><td><strong>Suécia</strong></td><td>NÃO</td><td>Cédulas de PAPEL</td><td>Pode adotar, ainda em Estudos.</td></tr>
+                
+                <tr class="status-abandoned"><td>110</td><td><strong>Suiça</strong></td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico foi usado, mas foi abandonado.</td></tr>
+                
+                <tr class="status-no"><td>111</td><td>Syrian Arab Republic</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>112</td><td><strong>Taiwan</strong></td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>113</td><td>Tajikistan</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>114</td><td>Thailand</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>115</td><td>The Gambia</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>116</td><td>Togo</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>117</td><td>Tonga</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>118</td><td>Trinidad and Tobago</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>119</td><td>Tunisia</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>120</td><td>Turkey</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>Pode adotar, ainda em Estudos.</td></tr>
+                <tr class="status-no"><td>121</td><td>Turkmenistan</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>122</td><td>Tuvalu</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>123</td><td>Uganda</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>124</td><td>Ukraine</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>Pode adotar, ainda em Estudos.</td></tr>
+                <tr class="status-no"><td>125</td><td><strong>Uruguay</strong></td><td>NÃO</td><td>Cédulas de PAPEL</td><td>Pode adotar, ainda em Estudos.</td></tr>
+                <tr class="status-no"><td>126</td><td>Uzbekistan</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>127</td><td>Vanuatu</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>128</td><td>Viet Nam</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>129</td><td>Yemen</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                <tr class="status-no"><td>130</td><td>Zimbabwe</td><td>NÃO</td><td>Cédulas de PAPEL</td><td>O voto eletrônico nunca foi usado</td></tr>
+                
+                <tr class="status-yes-dre"><td>131</td><td><strong>Bangladesh</strong></td><td>SIM</td><td>DRE / (Não Auditável)</td><td>SEM COMPROVANTE IMPRESSO !!!</td></tr>
+                <tr class="status-yes-dre"><td>132</td><td><strong>Bhutan</strong></td><td>SIM</td><td>DRE / (Não Auditável)</td><td>SEM COMPROVANTE IMPRESSO !!!</td></tr>
+                
+                <tr class="status-brazil"><td>133</td><td>Brazil &lt;&lt;&lt;&lt;&lt; ---------</td><td>SIM</td><td>DRE / (Não Auditável)</td><td>SEM COMPROVANTE IMPRESSO !!!</td></tr>
+                
+                <tr class="status-yes-vvpat"><td>134</td><td><strong>Argentina</strong></td><td>SIM</td><td>EBPs</td><td>URNA COM COMPROVANTE IMPRESSO !!!</td></tr>
+                <tr class="status-yes-vvpat"><td>135</td><td>Belgium</td><td>SIM</td><td>EBPs</td><td>URNA COM COMPROVANTE IMPRESSO !!!</td></tr>
+                <tr class="status-yes-vvpat"><td>136</td><td>Congo</td><td>SIM</td><td>EBPs</td><td>URNA COM COMPROVANTE IMPRESSO !!!</td></tr>
+                <tr class="status-yes-vvpat"><td>137</td><td>Albania</td><td>SIM</td><td>VVPAT</td><td>URNA COM COMPROVANTE IMPRESSO !!!</td></tr>
+                <tr class="status-yes-vvpat"><td>138</td><td>Bulgaria</td><td>SIM</td><td>VVPAT</td><td>URNA COM COMPROVANTE IMPRESSO !!!</td></tr>
+                <tr class="status-yes-vvpat"><td>139</td><td>Fiji</td><td>SIM</td><td>VVPAT</td><td>URNA COM COMPROVANTE IMPRESSO !!!</td></tr>
+                <tr class="status-yes-vvpat"><td>140</td><td>France</td><td>SIM</td><td>VVPAT</td><td>URNA COM COMPROVANTE IMPRESSO !!!</td></tr>
+                <tr class="status-yes-vvpat"><td>141</td><td>India</td><td>SIM</td><td>VVPAT</td><td>URNA COM COMPROVANTE IMPRESSO !!!</td></tr>
+                <tr class="status-yes-vvpat"><td>142</td><td>Iran, Islamic Republic of</td><td>SIM</td><td>VVPAT</td><td>URNA COM COMPROVANTE IMPRESSO !!!</td></tr>
+                <tr class="status-yes-vvpat"><td>143</td><td>Mexico</td><td>SIM</td><td>VVPAT</td><td>URNA COM COMPROVANTE IMPRESSO !!!</td></tr>
+                <tr class="status-yes-vvpat"><td>144</td><td>Namibia</td><td>SIM</td><td>VVPAT</td><td>URNA COM COMPROVANTE IMPRESSO !!!</td></tr>
+                <tr class="status-yes-vvpat"><td>145</td><td>Oman</td><td>SIM</td><td>VVPAT</td><td>URNA COM COMPROVANTE IMPRESSO !!!</td></tr>
+                <tr class="status-yes-vvpat"><td>146</td><td>Panama</td><td>SIM</td><td>VVPAT</td><td>URNA COM COMPROVANTE IMPRESSO !!!</td></tr>
+                <tr class="status-yes-vvpat"><td>147</td><td><strong>Paraguay</strong></td><td>SIM</td><td>VVPAT</td><td>URNA COM COMPROVANTE IMPRESSO !!!</td></tr>
+                <tr class="status-yes-vvpat"><td>148</td><td><strong>Peru</strong></td><td>SIM</td><td>VVPAT</td><td>URNA COM COMPROVANTE IMPRESSO !!!</td></tr>
+                <tr class="status-yes-vvpat"><td>149</td><td>Russian Federation</td><td>SIM</td><td>VVPAT</td><td>URNA COM COMPROVANTE IMPRESSO !!!</td></tr>
+                <tr class="status-yes-vvpat"><td>150</td><td>United States</td><td>SIM</td><td>VVPAT e Cedulas de Papel</td><td>URNA COM COMPROVANTE IMPRESSO !!!</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="observations">
+        <p>Obs1. Percebe-se que ao Contrário do que o TSE tenta passar ao Povo Braileiro, A Urna Eletronica <span>não é usada por grande Maioria dos Países.</span></p>
+        <p>Obs2. Inclusive grandes Potências como Japão, Alemanha, Suiça e outros chegaram a usar mas voltaram a trás, <span>alegam falta de transparência.</span></p>
+        <p>Obs3. E entre os Países que usam a URNA ELETRÔNICA, <span>estas URNAS tem sempre o COMPROVANTE IMPRESSO !! VVPAT</span></p>
+    </div>
+
+    <footer>
+        Fonte: International Institute for Democracy and Electoral Assistance (International IDEA) - <a href="https://www.idea.int" target="_blank" rel="noopener noreferrer">www.idea.int</a>
+    </footer>
+</div>
+
+</body>
+</html>
